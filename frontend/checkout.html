@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout Sécurisé — Valence Studio</title>
+  <meta name="robots" content="noindex" />
+  <script>
+    (function () {
+      const saved = localStorage.getItem('valence_theme') || 'system';
+      const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (saved === 'system' && sysDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="font-sans">
+  <div id="site-header"></div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div id="checkout-canceled-banner" class="hidden mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-sm">
+      Votre paiement a été annulé avant validation. Aucun montant n'a été débité.
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-7 surface-card rounded-2xl p-6 sm:p-8">
+        <div class="text-xs font-mono uppercase tracking-widest text-[#2546F0] dark:text-[#5B78FF] mb-2">Tunnel Chiffré International</div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold mb-6">Finaliser votre commande</h1>
+
+        <form id="checkout-form" class="space-y-5">
+          <div>
+            <label for="checkout-product-select" class="block text-xs font-mono uppercase opacity-70 mb-1.5">Actif sélectionné</label>
+            <select id="checkout-product-select" class="w-full px-3.5 py-2.5 rounded-xl surface-subtle text-sm font-medium"></select>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="customerName" class="block text-xs font-mono uppercase opacity-70 mb-1.5">Nom complet</label>
+              <input id="customerName" name="customerName" type="text" placeholder="Alex Martin" class="w-full px-3.5 py-2.5 rounded-xl surface-subtle text-sm" />
+            </div>
+            <div>
+              <label for="customerEmail" class="block text-xs font-mono uppercase opacity-70 mb-1.5">Email de livraison *</label>
+              <input id="customerEmail" name="customerEmail" type="email" required placeholder="alex@entreprise.com" class="w-full px-3.5 py-2.5 rounded-xl surface-subtle text-sm" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="companyName" class="block text-xs font-mono uppercase opacity-70 mb-1.5">Société (facture B2B optionnelle)</label>
+              <input id="companyName" name="companyName" type="text" placeholder="Studio Vecteur SAS" class="w-full px-3.5 py-2.5 rounded-xl surface-subtle text-sm" />
+            </div>
+            <div>
+              <label for="countryCode" class="block text-xs font-mono uppercase opacity-70 mb-1.5">Pays</label>
+              <select id="countryCode" name="countryCode" class="w-full px-3.5 py-2.5 rounded-xl surface-subtle text-sm">
+                <option value="FR">France (FR)</option>
+                <option value="BE">Belgique (BE)</option>
+                <option value="CH">Suisse (CH)</option>
+                <option value="CA">Canada (CA)</option>
+                <option value="US">États-Unis (US)</option>
+                <option value="GB">Royaume-Uni (GB)</option>
+                <option value="BF">Burkina Faso (BF)</option>
+                <option value="SN">Sénégal (SN)</option>
+                <option value="CI">Côte d'Ivoire (CI)</option>
+                <option value="DE">Allemagne (DE)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <span class="block text-xs font-mono uppercase opacity-70 mb-2">Passerelle de paiement</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="p-4 rounded-xl surface-subtle flex items-start gap-3 cursor-pointer border-2 border-transparent has-[:checked]:border-[#2546F0]">
+                <input type="radio" name="provider" value="saspay" checked class="mt-1" />
+                <div>
+                  <div class="font-bold text-sm">Saspay International</div>
+                  <div class="text-xs opacity-70">Cartes &amp; paiements globaux sécurisés</div>
+                </div>
+              </label>
+
+              <label class="p-4 rounded-xl surface-subtle flex items-start gap-3 cursor-pointer border-2 border-transparent has-[:checked]:border-[#2546F0]">
+                <input type="radio" name="provider" value="stripe" class="mt-1" />
+                <div>
+                  <div class="font-bold text-sm">Stripe Checkout</div>
+                  <div class="text-xs opacity-70">Visa, Mastercard, Apple Pay (optionnel)</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <label class="p-4 rounded-xl surface-subtle flex items-start gap-3 text-xs leading-relaxed cursor-pointer">
+            <input type="checkbox" name="waiverAccepted" required class="mt-0.5" />
+            <span>J'accepte les <a href="mentions-legales.html#cgv" target="_blank" class="underline font-semibold">Conditions Générales de Vente</a> et demande l'exécution immédiate de la fourniture du fichier numérique dès validation du paiement, renonçant expressément à mon droit de rétractation conformément à la réglementation applicable aux contenus numériques non fournis sur support matériel.</span>
+          </label>
+
+          <div id="checkout-error" class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-600 dark:text-red-400"></div>
+
+          <button id="checkout-submit-btn" type="submit" class="btn-kinetic w-full py-4 px-6 rounded-xl bg-[#2546F0] hover:bg-[#1B37CC] text-white font-semibold text-sm">
+            Procéder au paiement sécurisé
+          </button>
+        </form>
+      </div>
+
+      <aside class="lg:col-span-5 surface-card rounded-2xl p-6 sm:p-8 space-y-5">
+        <div class="text-xs font-mono uppercase opacity-60">Récapitulatif de commande</div>
+        <div id="checkout-product-summary"></div>
+        <div class="p-4 rounded-xl surface-subtle text-xs opacity-75 space-y-1.5">
+          <div class="font-semibold">Livraison automatisée post-paiement :</div>
+          <p>Dès validation du webhook signé, Brevo expédie votre URL privée Supabase Storage (valable 24 heures, 3 téléchargements maximum).</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module">
+    import { bootStorefrontPage } from './assets/js/theme-motion.js';
+    import { initCheckoutPage } from './assets/js/pages.js';
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      await initCheckoutPage();
+      bootStorefrontPage('');
+    });
+  </script>
+</body>
+</html>

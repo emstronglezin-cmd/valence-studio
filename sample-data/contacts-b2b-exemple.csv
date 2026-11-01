@@ -1,0 +1,12 @@
+company_name,email,sector,country,city,website
+Stripe Europe,info@stripe.com,FinTech,IE,Dublin,https://stripe.com
+Figma Studio,support@figma.com,Design Software,US,San Francisco,https://figma.com
+Brevo SAS,contact@brevo.com,MarTech & Email,FR,Paris,https://brevo.com
+Cloudflare Inc,sales@cloudflare.com,Cloud & Security,US,Austin,https://cloudflare.com
+Vercel Inc,support@vercel.com,Cloud Infrastructure,US,San Francisco,https://vercel.com
+Supabase Inc,support@supabase.io,Database & Cloud,SG,Singapore,https://supabase.com
+Linear Orbit,hello@linear.app,Product Management,US,San Francisco,https://linear.app
+Brevo Doublon Test,CONTACT@brevo.com,MarTech & Email,FR,Paris,https://brevo.com
+Consultant Perso Rejete,agence.studio@gmail.com,Conseil,FR,Lyon,https://exemple.fr
+Contact Nominatif Rejete,jean.dupont@stripe.com,FinTech,FR,Paris,https://stripe.com
+Email Malforme Rejete,contact@@domaine-invalide..test,Tech,FR,Lille,

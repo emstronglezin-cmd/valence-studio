@@ -1,0 +1,204 @@
+/* ==========================================================================
+   VALENCE STUDIO — DESIGN SYSTEM & MOTION STYLESHEET
+   Clair (Editorial Ivory) / Sombre (Obsidian Carbon) selon préférence système
+   ========================================================================== */
+
+:root {
+  --bg-canvas: #F7F6F2;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #EFECE6;
+  --ink-primary: #111215;
+  --ink-secondary: #4D515B;
+  --ink-muted: #767B87;
+  --border-hairline: rgba(17, 18, 21, 0.10);
+  --border-strong: rgba(17, 18, 21, 0.20);
+  --accent-primary: #2546F0;
+  --accent-hover: #1B37CC;
+  --accent-soft: rgba(37, 70, 240, 0.09);
+  --signal-emerald: #0D9468;
+  --shadow-elevated: 0 20px 45px -18px rgba(17, 18, 21, 0.10), 0 4px 12px -4px rgba(17, 18, 21, 0.05);
+  --grid-line: rgba(17, 18, 21, 0.035);
+}
+
+html.dark {
+  --bg-canvas: #090A0D;
+  --bg-surface: #111319;
+  --bg-subtle: #171A23;
+  --ink-primary: #F3F4F6;
+  --ink-secondary: #A2A8B6;
+  --ink-muted: #6E7484;
+  --border-hairline: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.20);
+  --accent-primary: #5B78FF;
+  --accent-hover: #748DFF;
+  --accent-soft: rgba(91, 120, 255, 0.14);
+  --signal-emerald: #10B981;
+  --shadow-elevated: 0 24px 55px -20px rgba(0, 0, 0, 0.65), 0 4px 14px -4px rgba(0, 0, 0, 0.45);
+  --grid-line: rgba(255, 255, 255, 0.03);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Chiffres tabulaires pour prix, compteurs et métriques */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grille architecturale légère en arrière-plan du Hero */
+.bg-architectural-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Surface élevée avec bordure fine */
+.surface-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--shadow-elevated);
+}
+
+.surface-subtle {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-hairline);
+}
+
+.hairline-border {
+  border-color: var(--border-hairline);
+}
+
+/* Effet 3D / Tilt sur les cartes produits */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  --glare-x: 50%;
+  --glare-y: 50%;
+  --glare-opacity: 0;
+}
+
+.tilt-card:hover {
+  border-color: var(--border-strong);
+}
+
+.tilt-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--glare-opacity);
+  transition: opacity 0.25s ease;
+  background: radial-gradient(
+    420px circle at var(--glare-x) var(--glare-y),
+    rgba(91, 120, 255, 0.14),
+    transparent 65%
+  );
+}
+
+.tilt-depth {
+  transform: translateZ(16px);
+}
+
+/* Micro-interactions sur les boutons */
+.btn-kinetic {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-kinetic:hover {
+  transform: translateY(-1.5px);
+}
+
+.btn-kinetic:active {
+  transform: translateY(0.5px) scale(0.99);
+}
+
+.btn-kinetic .arrow-shift {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-kinetic:hover .arrow-shift {
+  transform: translateX(4px);
+}
+
+/* Voile de transition fluide entre pages */
+#page-transition-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-color: var(--bg-canvas);
+  opacity: 0;
+  transition: opacity 0.18s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+body.is-transitioning #page-transition-veil {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Accordéon FAQ fluide */
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item[open] .faq-chevron {
+  transform: rotate(45deg);
+}
+
+/* Focus clavier accessible et net */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Respect absolu de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .tilt-card {
+    transform: none !important;
+  }
+
+  .tilt-card::after {
+    display: none !important;
+  }
+
+  #page-transition-veil {
+    display: none !important;
+  }
+}

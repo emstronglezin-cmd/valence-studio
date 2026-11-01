@@ -1,0 +1,141 @@
+-- ==============================================================================
+-- VALENCE STUDIO — DONNÉES INITIALES (PRODUITS & ARTICLES SEO)
+-- ==============================================================================
+
+INSERT INTO public.products (
+  slug, code, category,
+  title_fr, title_en,
+  subtitle_fr, subtitle_en,
+  description_fr, description_en,
+  price_cents_eur, price_cents_usd,
+  storage_path, file_format, file_size_label, version, featured,
+  badge_fr, badge_en, highlights, preview_items, faqs
+) VALUES
+(
+  'notion-agency-os',
+  'TPL-01',
+  'templates',
+  'Operating System Notion — Studio & Agence Internationale',
+  'Notion Operating System — International Studio & Agency',
+  'CRM B2B, pipeline multi-devises, suivi livrables, portail client et trésorerie automatisée.',
+  'B2B CRM, multi-currency pipeline, delivery tracker, client portal, and automated cashflow.',
+  'Conçu pour les freelances seniors, studios créatifs et agences opérant à l''international. Ce système Notion unifie votre prospection B2B, vos propositions commerciales, la gestion des sprints clients et la facturation multi-devises (EUR/USD/GBP) en une architecture claire, prête en 15 minutes.',
+  'Engineered for senior freelancers, creative studios, and international agencies. Unify B2B pipeline, proposals, client portals, sprint delivery, and multi-currency tracking in 15 minutes.',
+  7900, 8500,
+  'products/notion-agency-os-v3.zip',
+  'ZIP (Template Notion + SOP PDF + Automatisations Make/Webhook)',
+  '18.4 MB',
+  '3.2.0',
+  true,
+  'Best-seller',
+  'Best-seller',
+  '["14 bases de données relationnelles pré-liées", "Portail client partageable en 1 clic (FR & EN)", "Calculateur de rentabilité projet et TJM cible", "Mises à jour mineures et majeures incluses"]'::jsonb,
+  '[{"title":"Vue Direction & Cashflow","detail":"Projection à 90 jours du chiffre d''affaires signé, pondéré et encaissé."},{"title":"Portail Client Marque Blanche","detail":"Espace dédié par client : jalons, validations, livrables et compte-rendus."},{"title":"SOP d''Onboarding","detail":"12 procédures documentées prêtes à dupliquer pour déléguer sans friction."}]'::jsonb,
+  '[{"q":"Ai-je besoin d''un abonnement Notion payant ?","a":"Non, le système fonctionne intégralement sur un compte Notion gratuit (Personal/Free)."},{"q":"Le template est-il disponible en français et en anglais ?","a":"Oui, l''archive contient les deux versions complètes (FR et EN) pour travailler avec vos clients internationaux."}]'::jsonb
+),
+(
+  'playbook-acquisition-ia-b2b',
+  'GDE-01',
+  'guides',
+  'Playbook Ingénierie d''Acquisition B2B & Systèmes IA',
+  'B2B Acquisition Engineering & AI Systems Playbook',
+  '210 pages d''architecture concrète : SEO programmatique, séquences d''emails, positionnement et conversion.',
+  '210 pages of actionable systems: programmatic SEO, cold/warm outbound, positioning, and conversion.',
+  'Un manuel d''exécution sans théorie superflue. Découvrez comment bâtir un moteur d''acquisition organique et sortant qui génère des opportunités qualifiées chaque semaine grâce aux workflows IA, au référencement structuré et aux séquences de nurturing à haute délivrabilité.',
+  'A pure execution manual. Build a repeatable organic and outbound acquisition engine powered by structured SEO, high-deliverability email workflows, and precision AI prompts.',
+  5900, 6400,
+  'products/playbook-acquisition-ia-b2b.zip',
+  'PDF Haute Définition + EPUB + 18 Schémas Architecture SVG',
+  '24.1 MB',
+  '2.1.0',
+  true,
+  'Édition 2026',
+  '2026 Edition',
+  '["210 pages structurées en 9 protocoles opérationnels", "Checklists DNS (SPF, DKIM, DMARC) et délivrabilité", "Modèles de pages de vente et d''audit de conversion", "Exemples chiffrés B2B France, Europe et Amérique du Nord"]'::jsonb,
+  '[{"title":"Chapitre 01 — Positionnement & Offre Irrésistible","detail":"Découper votre expertise en actifs scalables et offres productisées."},{"title":"Chapitre 04 — Machine SEO & Contenu Structuré","detail":"Architecture cocon sémantique, données structurées JSON-LD et maillage interne."},{"title":"Chapitre 07 — Séquences Nurturing J+1 / J+3 / J+5","detail":"Anatomie exacte des emails qui transforment un inscrit froid en acheteur."}]'::jsonb,
+  '[{"q":"À qui s''adresse ce guide ?","a":"Aux fondateurs SaaS, consultants B2B, agences et créateurs de produits numériques souhaitant un système d''acquisition prévisible."},{"q":"Les frameworks sont-ils applicables hors marché francophone ?","a":"Absolument : tous les modèles d''emails et de landing pages sont fournis en français et en anglais."}]'::jsonb
+),
+(
+  'pack-prompts-operateur-elite',
+  'PRM-01',
+  'prompts',
+  'Matrice 450+ Prompts Ingénierie Commerciale, SEO & Produit',
+  '450+ Prompt Matrix — Revenue Engineering, SEO & Product',
+  'Bibliothèque structurée avec variables système pour Claude, GPT-4o et Llama 3.3 (Groq).',
+  'Structured system-prompt library engineered for Claude, GPT-4o, and Llama 3.3 (Groq).',
+  'Oubliez les prompts génériques d''une ligne. Cette bibliothèque rassemble 450 architectures de prompts multi-étapes (System Role, Contraintes, Exemples Few-Shot, Format de sortie JSON/Markdown) testées en production pour la rédaction SEO, le copywriting, l''analyse concurrentielle et l''automatisation.',
+  'Forget one-line generic prompts. Access 450 multi-stage prompt architectures tested in production for SEO editorial, conversion copywriting, competitive analysis, and API automation.',
+  4900, 5400,
+  'products/pack-prompts-operateur-elite.zip',
+  'JSON + Base Notion + Markdown + CSV API-Ready',
+  '9.6 MB',
+  '4.0.0',
+  true,
+  'Compatible API & Groq',
+  'API & Groq Ready',
+  '["450 prompts catégorisés en 12 départements métier", "Version JSON prête à injecter dans vos scripts Node.js / Python", "Variables dynamiques typées {{audience}}, {{offre}}, {{preuve}}", "Zéro remplissage : uniquement des prompts testés sur vrais livrables"]'::jsonb,
+  '[{"title":"Module Acquisition & Copywriting (120 prompts)","detail":"Pages de vente, hooks vidéos 3 secondes, séquences email et annonces."},{"title":"Module SEO & Editorial Long-Form (95 prompts)","detail":"Briefs sémantiques, articles 2 000 mots, FAQ Schema.org et réécriture."},{"title":"Module Stratégie, Pricing & Produit (110 prompts)","detail":"Analyse d''objections, structuration d''offres B2B et scripts de découverte."}]'::jsonb,
+  '[{"q":"Sur quels modèles d''IA ces prompts fonctionnent-ils ?","a":"Ils sont optimisés et testés sur Claude, ChatGPT, Gemini et Llama-3.3-70B via Groq."},{"q":"Puis-je les intégrer dans mes propres automatisations ?","a":"Oui, la licence inclut l''usage commercial interne dans vos workflows Make, n8n ou scripts backend."}]'::jsonb
+),
+(
+  'annuaire-b2b-international-verifie',
+  'DIR-01',
+  'directory',
+  'Annuaire B2B Vérifié — 2 500 Sociétés Tech, E-Commerce & Agences',
+  'Verified B2B Directory — 2,500 Tech, E-Commerce & Agency Companies',
+  'Exclusivement des emails génériques professionnels (contact@, info@, hello@) avec domaines MX vérifiés.',
+  'Strictly corporate role-based emails (contact@, info@, hello@) with verified MX domains.',
+  'Gagnez des centaines d''heures de recherche commerciale. Cet annuaire B2B international répertorie 2 500 entreprises actives filtrées par notre pipeline de contrôle qualité : aucun webmail personnel, aucune donnée nominative sensible, dédoublonnage strict et enregistrements DNS/MX vérifiés.',
+  'Save hundreds of hours of B2B research. 2,500 active companies filtered through our automated quality pipeline: zero free webmails, zero personal data, deduplicated, and MX-verified.',
+  12900, 13900,
+  'products/annuaire-b2b-international-verifie.zip',
+  'CSV UTF-8 + Excel (.xlsx) + Guide Prospection B2B Conforme',
+  '6.8 MB',
+  '2026.Q4',
+  true,
+  'Conformité B2B RGPD',
+  'GDPR Corporate Safe',
+  '["2 500 entreprises qualifiées (France, Belgique, Suisse, Canada, UK, USA)", "100 % d''adresses personnes morales génériques (contact@, bonjour@, hello@...)", "Contrôle syntaxique, anti-doublon et validation DNS/MX effectués", "Colonnes : Société, Secteur, Pays, Ville, Site Web, Email générique"]'::jsonb,
+  '[{"title":"Segmentation Sectorielle Fine","detail":"SaaS B2B, Studios Digitaux, Marques D2C, Cabinets Conseil et EdTech."},{"title":"Hygiène de Données Maximale","detail":"Exclusion totale des domaines gmail/outlook/yahoo et adresses nominatives."},{"title":"Import Immédiat CRM","detail":"Formaté nativement pour HubSpot, Pipedrive, Brevo, Lemlist et Notion."}]'::jsonb,
+  '[{"q":"Cet annuaire respecte-t-il les règles de prospection B2B ?","a":"Oui : il ne comporte aucune adresse personnelle nominative ni webmail privé, uniquement des coordonnées génériques publiques de personnes morales."},{"q":"À quelle fréquence les domaines sont-ils vérifiés ?","a":"Chaque lot est repassé au validateur DNS/MX avant publication trimestrielle."}]'::jsonb
+),
+(
+  'ui-kit-tailwind-landing-conversion',
+  'TPL-02',
+  'templates',
+  'Architecture UI Tailwind & GSAP — 18 Sections Haute Conversion',
+  'Tailwind & GSAP UI Architecture — 18 High-Conversion Sections',
+  'Composants HTML/Tailwind ultra-légers (Lighthouse 98+) avec micro-interactions GSAP et mode sombre natif.',
+  'Ultra-light HTML/Tailwind components (Lighthouse 98+) with GSAP micro-interactions and native dark mode.',
+  'Lancez des pages produits numériques et SaaS d''un niveau studio sans framework lourd. 18 blocs modulaires prêts à copier-coller, accessibles au clavier, compatibles prefers-reduced-motion et optimisés pour GitHub Pages, Cloudflare Pages ou Vercel.',
+  'Ship studio-grade SaaS and digital product pages without heavy frameworks. 18 modular sections with native dark/light polarity and accessible GSAP motion.',
+  6500, 6900,
+  'products/ui-kit-tailwind-landing-conversion.zip',
+  'ZIP (HTML5 + CSS + Modules JS GSAP + Tokens Figma)',
+  '11.2 MB',
+  '1.8.0',
+  false,
+  'Lighthouse 98+',
+  'Lighthouse 98+',
+  '["Zéro dépendance React/ Bundler complexe : pur HTML + Tailwind + GSAP", "Thème sombre et clair automatique selon les préférences système", "Grilles Bento, tableaux comparatifs, FAQ accessibles et cartes 3D", "Licence multi-projets commerciaux incluse"]'::jsonb,
+  '[{"title":"Système Typographique & Couleurs","detail":"Variables CSS sémantiques prêtes à adapter à votre identité en 2 minutes."},{"title":"Chorégraphie Motion Calibrée","detail":"ScrollTrigger, tilt 3D et compteurs désactivés proprement si reduced-motion actif."}]'::jsonb,
+  '[{"q":"Puis-je l''héberger gratuitement sur GitHub Pages ?","a":"Oui, l''architecture est 100 % statique et se déploie en quelques secondes sur GitHub Pages."}]'::jsonb
+)
+ON CONFLICT (slug) DO NOTHING;
+
+INSERT INTO public.seo_articles (
+  slug, title, meta_title, meta_description, keywords, outline, content_markdown, content_html, faq_items, reading_time_minutes
+) VALUES
+(
+  'automatiser-acquisition-b2b-produits-numeriques',
+  'Comment bâtir un système d''acquisition autonome pour vendre des produits numériques à l''international',
+  'Acquisition B2B Autonome pour Produits Numériques : Architecture Complète (2026)',
+  'Découvrez comment combiner un lead magnet double opt-in, une séquence nurturing IA et le SEO éditorial pour générer des ventes récurrentes de produits numériques.',
+  '["produits numériques", "acquisition B2B", "lead magnet double opt-in", "automatisation marketing", "vente internationale"]'::jsonb,
+  '["1. Pourquoi 90 % des boutiques de templates plafonnent faute de moteur d''acquisition", "2. L''architecture triptyque : SEO structuré, Lead Magnet à haute valeur et Nurturing J+1/J+3/J+5", "3. Sécuriser la délivrabilité internationale et la conformité RGPD", "4. Livraison instantanée et expérience post-achat irréprochable"]'::jsonb,
+  '## 1. Pourquoi la majorité des catalogues numériques restent invisibles\n\nCréer un excellent template Notion, un guide technique ou un pack de prompts ne représente que la moitié de l''équation...',
+  '<h2>1. Pourquoi la majorité des catalogues numériques restent invisibles</h2><p>Créer un excellent template Notion, un guide technique ou un pack de prompts ne représente que la moitié de l''équation. Sans flux régulier de visiteurs qualifiés et sans mécanisme de capture d''attention, même l''actif numérique le plus soigné dépend entièrement de publications manuelles épuisantes.</p><h2>2. L''architecture triptyque : SEO structuré, Lead Magnet et Nurturing</h2><p>Les studios digitaux les plus rentables transforment leur backend en véritable moteur d''acquisition : des articles de fond optimisés avec données structurées JSON-LD attirent un trafic d''intention ; un extrait gratuit concret convertit les lecteurs en abonnés vérifiés par double opt-in ; enfin, une séquence d''emails espacés (J+1, J+3, J+5) démontre votre méthode avant de proposer naturellement l''offre complète.</p><h2>3. Délivrabilité internationale et hygiène des données</h2><p>Vendre en Europe, au Canada ou aux États-Unis exige une rigueur technique stricte : recueil explicite du consentement, lien de désinscription en un clic et séparation nette entre vos communications marketing et vos emails transactionnels de livraison de fichiers.</p>',
+  '[{"question":"Quel taux de conversion viser sur un lead magnet B2B ?","answer":"Un extrait gratuit ultra-spécifique convertit généralement entre 4 % et 11 % des visiteurs qualifiés issus du SEO."},{"question":"Pourquoi imposer le double opt-in ?","answer":"Le double opt-in protège votre réputation d''expéditeur, élimine les adresses erronées et garantit un consentement vérifiable."}]'::jsonb,
+  6
+)
+ON CONFLICT (slug) DO NOTHING;

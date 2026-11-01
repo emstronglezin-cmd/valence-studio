@@ -1,0 +1,74 @@
+services:
+  - type: web
+    name: valence-studio-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    numInstances: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SERVE_FRONTEND_STATIC
+        value: "false"
+      - key: PAYMENT_SANDBOX_MODE
+        value: "false"
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: SUPABASE_STORAGE_BUCKET
+        value: digital-products
+      - key: DOWNLOAD_LINK_TTL_HOURS
+        value: "24"
+      - key: DOWNLOAD_MAX_COUNT
+        value: "3"
+      - key: B2B_VERIFY_DNS_MX
+        value: "true"
+      - key: ADMIN_API_KEY
+        generateValue: true
+      - key: APP_HMAC_SECRET
+        generateValue: true
+      - key: BACKEND_PUBLIC_URL
+        sync: false
+      - key: FRONTEND_PUBLIC_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: DEFAULT_PAYMENT_PROVIDER
+        value: saspay
+      - key: SASPAY_API_BASE_URL
+        sync: false
+      - key: SASPAY_MERCHANT_ID
+        sync: false
+      - key: SASPAY_API_KEY
+        sync: false
+      - key: SASPAY_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: EMAIL_FROM_ADDRESS
+        sync: false
+      - key: EMAIL_FROM_NAME
+        value: Valence Studio
+      - key: OWNER_DIGEST_EMAIL
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: QSTASH_URL
+        value: https://qstash.upstash.io
+      - key: QSTASH_TOKEN
+        sync: false
+      - key: QSTASH_CURRENT_SIGNING_KEY
+        sync: false
+      - key: QSTASH_NEXT_SIGNING_KEY
+        sync: false

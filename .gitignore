@@ -1,0 +1,27 @@
+# Dépendances
+node_modules/
+backend/node_modules/
+
+# Secrets et variables d'environnement (NE JAMAIS COMMITER)
+.env
+.env.local
+.env.production
+backend/.env
+
+# Fichiers systèmes, caches locaux et logs
+.DS_Store
+*.log
+npm-debug.log*
+.npm/
+.cache/
+.local/
+.arena/
+.bash_history
+.bashrc
+.profile
+.gitconfig
+.netrc
+
+# Fichiers temporaires d'export ou de test
+tmp/
+coverage/

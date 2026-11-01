@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue — Templates, Guides, Packs de Prompts &amp; Annuaires B2B | Valence Studio</title>
+  <meta name="description" content="Explorez l'ensemble des produits numériques Valence Studio : systèmes Notion, playbooks B2B, prompts IA et annuaires professionnels vérifiés." />
+  <script>
+    (function () {
+      const saved = localStorage.getItem('valence_theme') || 'system';
+      const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (saved === 'system' && sysDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="font-sans">
+  <div id="site-header"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="max-w-3xl mb-10" data-hero-item>
+      <div class="text-xs font-mono uppercase tracking-widest text-[#2546F0] dark:text-[#5B78FF] mb-2">Catalogue International</div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">Tous nos actifs numériques</h1>
+      <p class="opacity-75 text-sm sm:text-base leading-relaxed">
+        Chaque produit est livré instantanément après paiement via une URL signée privée (valable 24 heures, 3 téléchargements max). Basculez en EUR ou USD dans l'en-tête.
+      </p>
+    </div>
+
+    <div class="surface-card rounded-2xl p-4 sm:p-5 mb-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4" data-hero-item>
+      <div id="catalog-category-filters" class="flex flex-wrap items-center gap-2"></div>
+
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <input
+          id="catalog-search-input"
+          type="search"
+          placeholder="Rechercher (Notion, Groq, B2B...)"
+          aria-label="Rechercher un produit"
+          class="px-3.5 py-2 rounded-lg surface-subtle text-sm min-w-[230px]"
+        />
+        <select id="catalog-sort-select" aria-label="Trier les produits" class="px-3.5 py-2 rounded-lg surface-subtle text-xs font-mono">
+          <option value="featured">Tri : Recommandés</option>
+          <option value="price-asc">Prix : Croissant</option>
+          <option value="price-desc">Prix : Décroissant</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-5 text-xs font-mono opacity-65" id="catalog-count-badge">Chargement...</div>
+    <div id="catalog-products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module">
+    import { bootStorefrontPage } from './assets/js/theme-motion.js';
+    import { initCatalogPage } from './assets/js/pages.js';
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      await initCatalogPage();
+      bootStorefrontPage('catalog');
+    });
+  </script>
+</body>
+</html>

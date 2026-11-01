@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions Légales, CGV &amp; Politique de Confidentialité | Valence Studio</title>
+  <meta name="description" content="Mentions légales, Conditions Générales de Vente internationales de produits numériques et Politique RGPD de Valence Studio." />
+  <script>
+    (function () {
+      const saved = localStorage.getItem('valence_theme') || 'system';
+      const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (saved === 'system' && sysDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="font-sans">
+  <div id="site-header"></div>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+    <div id="unsubscribed-notice" class="hidden p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/35">
+      <div class="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400 mb-1">Désinscription prise en compte</div>
+      <h2 class="text-lg font-bold">Votre adresse a bien été retirée de notre liste d'envoi.</h2>
+      <p class="text-sm opacity-80 mt-1">Tous les emails planifiés de votre séquence de nurturing ont été annulés immédiatement.</p>
+    </div>
+
+    <header class="space-y-3">
+      <div class="text-xs font-mono uppercase tracking-widest text-[#2546F0] dark:text-[#5B78FF]">Cadre Contractuel &amp; Conformité</div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Mentions Légales, CGV &amp; Confidentialité</h1>
+      <div class="flex flex-wrap gap-3 pt-2 text-xs font-mono">
+        <a href="#mentions" class="px-3 py-1.5 rounded-lg surface-subtle">1. Mentions Légales</a>
+        <a href="#cgv" class="px-3 py-1.5 rounded-lg surface-subtle">2. CGV Produits Numériques</a>
+        <a href="#confidentialite" class="px-3 py-1.5 rounded-lg surface-subtle">3. RGPD &amp; Données B2B</a>
+      </div>
+    </header>
+
+    <section id="mentions" class="surface-card rounded-2xl p-6 sm:p-8 space-y-4 text-sm leading-relaxed">
+      <h2 class="text-xl font-bold">1. Mentions Légales</h2>
+      <p><strong>Éditeur :</strong> Valence Studio (remplacez ces coordonnées par votre dénomination sociale, forme juridique, numéro d'immatriculation et siège social avant ouverture commerciale).</p>
+      <p><strong>Contact &amp; Support client :</strong> bonjour@valence-studio.com</p>
+      <p><strong>Hébergement Front-End :</strong> GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.</p>
+      <p><strong>Hébergement API &amp; Stockage :</strong> Render Services, Inc. (API) et Supabase, Inc. (Base de données et Stockage chiffré privé).</p>
+    </section>
+
+    <section id="cgv" class="surface-card rounded-2xl p-6 sm:p-8 space-y-4 text-sm leading-relaxed">
+      <h2 class="text-xl font-bold">2. Conditions Générales de Vente (CGV Internationaux)</h2>
+      <h3 class="font-bold pt-2">2.1 Objet et Produits Numériques</h3>
+      <p>Les présentes CGV régissent la vente en ligne à l'international de contenus numériques fournis sans support matériel : templates logiciels, guides électroniques (PDF/EPUB), bibliothèques de prompts IA et annuaires professionnels d'entreprises B2B.</p>
+
+      <h3 class="font-bold pt-2">2.2 Prix et Devises</h3>
+      <p>Les prix sont affichés en Euros (EUR) ou en Dollars américains (USD) selon le choix de l'Acheteur. Le montant exact facturé est récapitulé avant validation définitive sur la page de paiement.</p>
+
+      <h3 class="font-bold pt-2">2.3 Paiement Sécurisé et Livraison par URL Signée</h3>
+      <p>Le règlement s'effectue au comptant via nos prestataires agréés (Saspay ou Stripe). Dès confirmation cryptographique du paiement par webhook, l'Acheteur reçoit par courrier électronique (Brevo) une URL signée personnelle, valable <strong>24 heures</strong> et limitée à <strong>3 téléchargements maximum</strong>. Il appartient à l'Acheteur d'archiver ses fichiers dès téléchargement.</p>
+
+      <h3 class="font-bold pt-2">2.4 Droit de Rétractation sur le Contenu Numérique</h3>
+      <p>Conformément aux dispositions applicables à la fourniture de contenus numériques non fournis sur un support matériel dont l'exécution commence immédiatement avec l'accord préalable exprès du client, l'Acheteur reconnaît et accepte lors du Checkout qu'il renonce expressément à son droit de rétractation dès la génération du lien de téléchargement. En cas d'anomalie technique avérée empêchant l'ouverture de l'archive, notre support s'engage à fournir un fichier fonctionnel ou à procéder au remboursement.</p>
+
+      <h3 class="font-bold pt-2">2.5 Licence d'Utilisation</h3>
+      <p>Chaque commande confère à l'Acheteur une licence mondiale, non exclusive et incessible d'utilisation professionnelle interne. La revente, la redistribution publique ou le partage massif des fichiers sources, prompts ou annuaires B2B sont strictement interdits.</p>
+    </section>
+
+    <section id="confidentialite" class="surface-card rounded-2xl p-6 sm:p-8 space-y-4 text-sm leading-relaxed">
+      <h2 class="text-xl font-bold">3. Politique de Confidentialité, RGPD &amp; Éthique Annuaire B2B</h2>
+      <p><strong>Aucun traceur publicitaire tiers :</strong> Valence Studio n'utilise aucun cookie publicitaire intrusif. Les statistiques de fréquentation reposent uniquement sur un condensat journalier irréversible ne permettant aucune identification personnelle.</p>
+      <p><strong>Lead Magnet &amp; Double Opt-In :</strong> l'envoi de notre extrait gratuit et de la séquence de 3 emails (J+1, J+3, J+5) repose sur votre consentement explicite horodaté et confirmé par double opt-in. Chaque email intègre un lien de désinscription actif en un clic (ainsi que l'en-tête standard <code>List-Unsubscribe</code>).</p>
+      <p id="desinscription"><strong>Annuaire B2B :</strong> nos bases professionnelles excluent systématiquement les adresses personnelles nominatives et les webmails grand public ; seules des coordonnées génériques publiques de personnes morales (telles que <code>contact@</code>, <code>info@</code> ou <code>hello@</code>) sur domaines professionnels vérifiés sont référencées. Toute structure peut demander le retrait ou la rectification de son entrée générique sur simple courriel à bonjour@valence-studio.com.</p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module">
+    import { bootStorefrontPage } from './assets/js/theme-motion.js';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('unsubscribed') === '1') {
+        document.getElementById('unsubscribed-notice')?.classList.remove('hidden');
+      }
+      bootStorefrontPage('');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal SEO &amp; Protocoles d'Acquisition B2B | Valence Studio</title>
+  <meta name="description" content="Articles de fond, méthodes SEO, ingénierie de prompts IA et structuration d'opérations B2B internationales." />
+  <script>
+    (function () {
+      const saved = localStorage.getItem('valence_theme') || 'system';
+      const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (saved === 'system' && sysDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="font-sans">
+  <div id="site-header"></div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div id="seo-article-reader" class="hidden"></div>
+
+    <div id="seo-hub-header" class="mb-10 max-w-2xl">
+      <div class="text-xs font-mono uppercase tracking-widest text-[#2546F0] dark:text-[#5B78FF] mb-2">Journal d'Ingénierie B2B</div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">Articles SEO &amp; Méthodes</h1>
+      <p class="opacity-75 text-sm sm:text-base">
+        Dossiers générés, structurés avec balises Schema.org JSON-LD et indexés dans <code>sitemap.xml</code>.
+      </p>
+    </div>
+
+    <div id="seo-articles-list" class="grid grid-cols-1 md:grid-cols-2 gap-7"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module">
+    import { bootStorefrontPage } from './assets/js/theme-motion.js';
+    import { initBlogPage } from './assets/js/pages.js';
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (new URLSearchParams(window.location.search).get('slug')) {
+        document.getElementById('seo-hub-header')?.classList.add('hidden');
+      }
+      await initBlogPage();
+      bootStorefrontPage('blog');
+    });
+  </script>
+</body>
+</html>
