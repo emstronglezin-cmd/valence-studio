@@ -20,18 +20,19 @@ valence-studio/
 │   ├── admin.html             # Tableau de stats, digest IA & importateur CSV Annuaire B2B
 │   ├── articles/              # Pages HTML SEO statiques générées pour GitHub Pages
 │   └── sitemap.xml            # Sitemap XML SEO
-├── backend/                   # Node.js 20+ (Express) — Render Free (1 instance, sans état)
-│   ├── src/
-│   │   ├── payments/          # Interface abstraite PaymentProvider + SaspayProvider + StripeProvider
-│   │   ├── acquisition/       # Lead magnet, nurturing Groq J+1/J+3/J+5, digest quotidien, PublishAdapter
-│   │   ├── services/          # Supabase Storage privé, Brevo, Groq, QStash, B2B CSV, SEO
-│   │   ├── middleware/        # Helmet, CORS strict, Rate limiting, Auth Admin & Signature QStash
-│   │   └── routes/            # /health, /api/products, /api/checkout, /api/webhooks, /api/leads...
-│   └── scripts/
-│       ├── setup-qstash.js    # Création automatique des crons Upstash QStash (*/5 /health + 0 7 * * *)
-│       ├── import-b2b-csv.js  # CLI d'import et nettoyage qualité d'annuaire B2B (.csv)
-│       ├── build-seo-pages.js # Synchronisation des pages SEO statiques & sitemap.xml
-│       └── smoke-test.js      # Suite de tests d'intégration bout-en-bout
+├── package.json               # Dépendances & scripts Node.js à la racine pour déploiement direct Render
+├── index.js                   # Point d'entrée racine Express (compatible npm start / node index.js)
+├── src/                       # Backend Node.js 20+ (Express) — Render Free (1 instance, sans état)
+│   ├── payments/              # Interface abstraite PaymentProvider + SaspayProvider + StripeProvider
+│   ├── acquisition/           # Lead magnet, nurturing Groq J+1/J+3/J+5, digest quotidien, PublishAdapter
+│   ├── services/              # Supabase Storage privé, Brevo, Groq, QStash, B2B CSV, SEO
+│   ├── middleware/            # Helmet, CORS strict, Rate limiting, Auth Admin & Signature QStash
+│   └── routes/                # /health, /api/products, /api/checkout, /api/webhooks, /api/leads...
+├── scripts/
+│   ├── setup-qstash.js        # Création automatique des crons Upstash QStash (*/5 /health + 0 7 * * *)
+│   ├── import-b2b-csv.js      # CLI d'import et nettoyage qualité d'annuaire B2B (.csv)
+│   ├── build-seo-pages.js     # Synchronisation des pages SEO statiques & sitemap.xml
+│   └── smoke-test.js          # Suite de tests d'intégration bout-en-bout
 ├── supabase/
 │   ├── schema.sql             # Tables PostgreSQL, index, RLS et fonction atomique consume_download_slot
 │   └── seed.sql               # Catalogue initial (6 actifs) + articles SEO initiaux

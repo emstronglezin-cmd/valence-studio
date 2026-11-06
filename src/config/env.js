@@ -5,50 +5,57 @@ import dotenv from 'dotenv';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Charge backend/.env puis ../.env si disponible
+// Charge .env à la racine du dépôt si disponible
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
-dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 const port = Number.parseInt(process.env.PORT || '3000', 10);
 
 const parseAllowedOrigins = (raw) => {
-  if (!raw) return [];
+  if (!raw) {
+    return isProduction ? ['https://emstronglezin-cmd.github.io'] : [];
+  }
   return raw
     .split(',')
     .map((origin) => origin.trim().replace(/\/+$/, ''))
     .filter(Boolean);
 };
 
-// En développement uniquement, un secret HMAC éphémère de session est généré si absent
-// En production sur Render, APP_HMAC_SECRET est généré/fourni dans les variables d'environnement
-const fallbackDevSecret = crypto
-  .createHash('sha256')
-  .update(`valence-dev-hmac-${process.cwd()}`)
-  .digest('hex');
+// Si APP_HMAC_SECRET n'est pas encore configuré dans l'environnement, génère un secret
+// aléatoire en mémoire pour éviter tout plantage au démarrage avant saisie des variables Render.
+const fallbackBootSecret = crypto.randomBytes(32).toString('hex');
+
+const resolvedBackendUrl = (
+  process.env.BACKEND_PUBLIC_URL ||
+  process.env.RENDER_EXTERNAL_URL ||
+  `http://localhost:${port}`
+).replace(/\/+$/, '');
+
+const resolvedFrontendUrl = (
+  process.env.FRONTEND_PUBLIC_URL ||
+  (isProduction ? 'https://emstronglezin-cmd.github.io/valence-studio' : `http://localhost:${port}`)
+).replace(/\/+$/, '');
 
 export const env = {
   nodeEnv,
   isProduction,
   port,
 
-  backendPublicUrl: (process.env.BACKEND_PUBLIC_URL || `http://localhost:${port}`).replace(/\/+$/, ''),
-  frontendPublicUrl: (process.env.FRONTEND_PUBLIC_URL || `http://localhost:${port}`).replace(/\/+$/, ''),
-  hasExplicitBackendUrl: Boolean(process.env.BACKEND_PUBLIC_URL),
-  hasExplicitFrontendUrl: Boolean(process.env.FRONTEND_PUBLIC_URL),
-  browserApiPrefix: process.env.BACKEND_PUBLIC_URL
-    ? process.env.BACKEND_PUBLIC_URL.replace(/\/+$/, '')
-    : '',
-  browserFrontendPrefix: process.env.FRONTEND_PUBLIC_URL
-    ? process.env.FRONTEND_PUBLIC_URL.replace(/\/+$/, '')
-    : '',
+  backendPublicUrl: resolvedBackendUrl,
+  frontendPublicUrl: resolvedFrontendUrl,
+  hasExplicitBackendUrl: Boolean(process.env.BACKEND_PUBLIC_URL || process.env.RENDER_EXTERNAL_URL),
+  hasExplicitFrontendUrl: Boolean(process.env.FRONTEND_PUBLIC_URL || isProduction),
+  browserApiPrefix:
+    process.env.BACKEND_PUBLIC_URL || process.env.RENDER_EXTERNAL_URL ? resolvedBackendUrl : '',
+  browserFrontendPrefix:
+    process.env.FRONTEND_PUBLIC_URL || isProduction ? resolvedFrontendUrl : '',
   allowedOrigins: parseAllowedOrigins(process.env.ALLOWED_ORIGINS),
   serveFrontendStatic:
     process.env.SERVE_FRONTEND_STATIC === 'true' || (!isProduction && process.env.SERVE_FRONTEND_STATIC !== 'false'),
 
   adminApiKey: process.env.ADMIN_API_KEY || '',
-  appHmacSecret: process.env.APP_HMAC_SECRET || (isProduction ? '' : fallbackDevSecret),
+  appHmacSecret: process.env.APP_HMAC_SECRET || fallbackBootSecret,
 
   supabase: {
     url: process.env.SUPABASE_URL || '',

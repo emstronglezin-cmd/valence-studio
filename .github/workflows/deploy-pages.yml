@@ -35,7 +35,7 @@ jobs:
           BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
           FRONTEND_PUBLIC_URL: ${{ vars.FRONTEND_PUBLIC_URL }}
         run: |
-          cd backend && npm install --omit=dev
+          npm ci --omit=dev
           node scripts/build-seo-pages.js
 
       - name: Configure GitHub Pages

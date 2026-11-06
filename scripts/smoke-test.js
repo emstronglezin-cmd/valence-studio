@@ -189,7 +189,7 @@ try {
 
   // 8. Importateur CSV Annuaire B2B via API Admin
   const sampleCsv = await fs.readFile(
-    path.resolve(process.cwd(), '../sample-data/contacts-b2b-exemple.csv'),
+    new URL('../sample-data/contacts-b2b-exemple.csv', import.meta.url),
     'utf8'
   );
   const b2bRes = await fetch(`${base}/api/admin/b2b/import`, {

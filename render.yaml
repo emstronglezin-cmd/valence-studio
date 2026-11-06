@@ -1,11 +1,9 @@
 services:
   - type: web
-    name: valence-studio-api
+    name: valence-studio
     runtime: node
     plan: free
-    region: frankfurt
-    rootDir: backend
-    buildCommand: npm install
+    buildCommand: npm ci
     startCommand: npm start
     healthCheckPath: /health
     numInstances: 1

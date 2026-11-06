@@ -6,7 +6,7 @@ import { seoRenderService } from '../src/services/seoRenderService.js';
 import { env } from '../src/config/env.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const frontendDir = path.resolve(__dirname, '../../frontend');
+const frontendDir = path.resolve(__dirname, '../frontend');
 const articlesOutDir = path.join(frontendDir, 'articles');
 
 async function main() {

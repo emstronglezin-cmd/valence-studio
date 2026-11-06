@@ -1,0 +1,32 @@
+{
+  "name": "valence-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Boutique autonome de produits numériques & agent d'acquisition IA (Express, Supabase, QStash, Groq, Brevo, Saspay/Stripe)",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "scripts": {
+    "build": "node -e \"console.log('Valence Studio backend build OK')\"",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "qstash:setup": "node scripts/setup-qstash.js",
+    "import:b2b": "node scripts/import-b2b-csv.js",
+    "generate:seo": "node scripts/build-seo-pages.js",
+    "test:smoke": "node scripts/smoke-test.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.10",
+    "@upstash/qstash": "^2.7.17",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "stripe": "^17.5.0",
+    "zod": "^3.24.1"
+  }
+}

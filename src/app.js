@@ -64,13 +64,23 @@ export function createApp() {
   app.use(seoPublicRouter);
 
   // 7. En développement / aperçu local uniquement : servir le dossier statique frontend/
+  // En production API sur Render : répondre proprement 200 OK sur GET / (healthcheck par défaut)
   if (env.serveFrontendStatic) {
-    const frontendDir = path.resolve(__dirname, '../../frontend');
+    const frontendDir = path.resolve(__dirname, '../frontend');
     app.use(express.static(frontendDir, { extensions: ['html'] }));
+  } else {
+    app.get('/', (_req, res) => {
+      res.status(200).json({
+        status: 'ok',
+        service: 'valence-studio-api',
+        health: '/health',
+        storefront: env.frontendPublicUrl,
+      });
+    });
   }
 
   // 8. Gestionnaire 404 API
-  app.use('/api/*', (_req, res) => {
+  app.use('/api', (_req, res) => {
     res.status(404).json({ error: 'Endpoint API introuvable.' });
   });
 

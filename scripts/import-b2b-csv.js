@@ -1,10 +1,15 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { b2bDirectoryService } from '../src/services/b2bDirectoryService.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 async function main() {
-  const targetArg = process.argv[2] || '../sample-data/contacts-b2b-exemple.csv';
-  const resolvedPath = path.resolve(process.cwd(), targetArg);
+  const targetArg = process.argv[2];
+  const resolvedPath = targetArg
+    ? path.resolve(process.cwd(), targetArg)
+    : path.resolve(__dirname, '../sample-data/contacts-b2b-exemple.csv');
 
   console.info(`Lecture du fichier CSV : ${resolvedPath}`);
   const csvContent = await fs.readFile(resolvedPath, 'utf8');

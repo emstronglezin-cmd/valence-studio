@@ -8,7 +8,7 @@ const isGitHubPages = window.location.hostname.endsWith('github.io');
 export const STORE_CONFIG = {
   brandName: 'Valence Studio',
   // Sur GitHub Pages, remplacez par l'URL publique de votre service Render :
-  apiBaseUrl: isGitHubPages ? 'https://valence-studio-api.onrender.com' : '',
+  apiBaseUrl: isGitHubPages ? 'https://valence-studio.onrender.com' : '',
   defaultCurrency: localStorage.getItem('valence_currency') || 'EUR',
   defaultLocale: localStorage.getItem('valence_locale') || 'fr',
   supportEmail: 'bonjour@valence-studio.com',

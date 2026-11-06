@@ -4,4 +4,4 @@ Disallow: /admin.html
 Disallow: /checkout.html
 Disallow: /merci.html
 Sitemap: https://emstronglezin-cmd.github.io/valence-studio/sitemap.xml
-Sitemap: https://valence-studio-api.onrender.com/sitemap.xml
+Sitemap: https://valence-studio.onrender.com/sitemap.xml
